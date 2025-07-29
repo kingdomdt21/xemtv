@@ -1,0 +1,45 @@
+#EXTM3U
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv1-hd.png",VTV1 HD
+http://iptv.nhadai.org/stream/vtv1-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv2-hd.png",VTV2 HD
+http://iptv.nhadai.org/stream/vtv2-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv3-hd.png",VTV3 HD
+http://iptv.nhadai.org/stream/vtv3-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv4-hd.png",VTV4 HD
+http://iptv.nhadai.org/stream/vtv4-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv5-hd.png",VTV5 HD
+http://iptv.nhadai.org/stream/vtv5-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv5-tay-nam-bo.png",VTV5 Tây Nam Bộ
+http://iptv.nhadai.org/stream/vtv5-tay-nam-bo
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv5-tay-nguyen.png",VTV5 Tây Nguyên
+http://iptv.nhadai.org/stream/vtv5-tay-nguyen
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv7-hd.png",VTV7 HD
+http://iptv.nhadai.org/stream/vtv7-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/vtv-can-tho.png",VTV Cần Thơ
+http://iptv.nhadai.org/stream/vtv-can-tho
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/htv9-hd.png",HTV9 HD
+http://iptv.nhadai.org/stream/htv9-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/htvc-the-thao.png",HTVC Thể Thao
+http://iptv.nhadai.org/stream/htvc-the-thao
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/fpt-play.png",FPT Play
+http://iptv.nhadai.org/stream/fpt-play
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/asian-food-channel.png",Asian Food Channel
+http://iptv.nhadai.org/stream/asian-food-channel
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/da-vinci-learning.png",Da Vinci Learning
+http://iptv.nhadai.org/stream/da-vinci-learning
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/cnbc.png",CNBC
+http://iptv.nhadai.org/stream/cnbc
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/kbs-world.png",KBS World
+http://iptv.nhadai.org/stream/kbs-world
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/nhk-world-hd.png",NHK World HD
+http://iptv.nhadai.org/stream/nhk-world-hd
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/dw.png",DW
+http://iptv.nhadai.org/stream/dw
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/arirang.png",Arirang
+http://iptv.nhadai.org/stream/arirang
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/channel-newsasia.png",Channel NewsAsia
+http://iptv.nhadai.org/stream/channel-newsasia
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/france-24.png",France 24
+http://iptv.nhadai.org/stream/france-24
+#EXTINF:-1 tvg-logo="http://iptv.nhadai.org/img/tv5-monde.png",TV5 Monde
+http://iptv.nhadai.org/stream/tv5-monde

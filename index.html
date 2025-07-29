@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem TV</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    #channelList {
+      width: 300px;
+      background: #111;
+      color: #fff;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    #channelList div {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+    #channelList div:hover {
+      background-color: #333;
+    }
+    #player {
+      flex: 1;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    video {
+      width: 95%;
+      max-width: 1000px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+    }
+    .texta{
+      color: #fff;
+      text-decoration: none;
+    }
+    .texta:hover{
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="channelList">
+    <a class="texta" href="xemtv.html"><h3>🔗 Xem video .m3u8 từ link</h3></a>
+    <h3>📺 Danh sách kênh</h3>
+    <div id="channels">⏳ Đang tải danh sách...</div>
+  </div>
+
+  <div id="player">
+    <video id="video" controls autoplay></video>
+  </div>
+
+  <script>
+    const channelsDiv = document.getElementById('channels');
+    const video = document.getElementById('video');
+    let hls;
+
+    // 🔄 Tự động tải playlist.m3u8
+    fetch('playlist.m3u8')
+      .then(response => {
+        if (!response.ok) throw new Error("Không tìm thấy file playlist.m3u8");
+        return response.text();
+      })
+      .then(content => parseM3U8(content))
+      .catch(error => {
+        channelsDiv.innerHTML = "⚠️ Lỗi tải playlist: " + error.message;
+      });
+
+    function parseM3U8(text) {
+      const lines = text.split('\n');
+      const channels = [];
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith('#EXTINF')) {
+          const name = lines[i].split(',')[1] || 'Kênh không tên';
+          const url = lines[i + 1]?.trim();
+          if (url && !url.startsWith('#')) {
+            channels.push({ name, url });
+          }
+        }
+      }
+
+      if (channels.length === 0) {
+        channelsDiv.innerHTML = "⚠️ Không có kênh nào trong file.";
+        return;
+      }
+
+      channelsDiv.innerHTML = '';
+      channels.forEach(chan => {
+        const div = document.createElement('div');
+        div.textContent = chan.name;
+        div.onclick = () => playChannel(chan.url);
+        channelsDiv.appendChild(div);
+      });
+
+      // 🔁 Tự phát kênh đầu tiên
+      playChannel(channels[0].url);
+    }
+
+    function playChannel(url) {
+      if (hls) hls.destroy();
+      if (Hls.isSupported()) {
+        hls = new Hls({ lowLatencyMode: true });
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+        video.addEventListener('loadedmetadata', () => video.play());
+      } else {
+        alert("Trình duyệt không hỗ trợ HLS.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem M3U8 từ link hoặc file</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input[type="text"], input[type="file"], button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    video {
+      width: 90%;
+      max-width: 960px;
+      margin-top: 20px;
+      border: 3px solid white;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔗 Xem video .m3u8 từ link hoặc file</h2>
+
+  <!-- Nhập link m3u8 -->
+  <input type="text" id="urlInput" placeholder="Dán link .m3u8 vào đây" size="50" />
+  <button onclick="playFromURL()">▶️ Phát từ Link</button>
+  <br>
+  <br><br>
+  <video id="video" controls autoplay></video>
+
+  <script>
+    const video = document.getElementById('video');
+
+    function playM3U8(src) {
+      if (Hls.isSupported()) {
+        const hls = new Hls({ lowLatencyMode: true });
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = src;
+        video.addEventListener('loadedmetadata', () => {
+          video.play();
+        });
+      } else {
+        alert("Trình duyệt không hỗ trợ phát HLS.");
+      }
+    }
+
+    function playFromURL() {
+      const url = document.getElementById('urlInput').value.trim();
+      if (url) {
+        playM3U8(url);
+      } else {
+        alert("Vui lòng nhập link .m3u8");
+      }
+    }
+
+    function playFromFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        playM3U8(fileURL);
+      } else {
+        alert("Vui lòng chọn file .m3u8");
+      }
+    }
+  </script>
+</body>
+</html>
